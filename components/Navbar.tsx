@@ -37,9 +37,10 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] bg-white transition-all duration-300 ${
         scrolled
-          ? "border-b border-[#DCE7F5] shadow-sm py-3"
-          : "border-b border-[#EEF6FF] py-3.5"
+          ? "border-b border-[#DCE7F5] shadow-sm pb-3"
+          : "border-b border-[#EEF6FF] pb-3.5"
       }`}
+      style={{ paddingTop: "calc(0.75rem + env(safe-area-inset-top, 0px))" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">

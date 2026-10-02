@@ -7,14 +7,14 @@ export const companyInfo = {
   aboutHeroTitle: "Technology Built Around Real Business Needs",
   aboutHeadline: "A team of passionate developers and problem solvers building technology for a smarter future.",
   aboutSubtext: "We help businesses turn ideas into powerful digital products through modern design, clean development and practical solutions. From websites to web apps and mobile applications, we work closely with clients to understand their goals and deliver technology that creates real value.",
-  
+
   mission: "To deliver practical and innovative technology solutions that help businesses operate, connect and grow.",
   vision: "To build a trusted technology company known for thoughtful products, reliable development and long-term partnerships.",
-  
+
   contact: {
     email: "contact@5zentech.com",
     phone: "+91 98765 43210",
-    location: "Bengaluru, India / Remote Worldwide",
+    location: "TamilNadu, India / Remote Worldwide",
     hours: "Monday - Friday: 9:00 AM - 6:00 PM IST"
   },
 
