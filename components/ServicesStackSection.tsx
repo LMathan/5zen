@@ -148,18 +148,21 @@ function MobileServicesStack({ services }: { services: Service[] }) {
     offset: ["start start", "end end"],
   });
 
-  // Fade the entire deck out as scroll nears the end (0.85→1.0)
-  // This cleanly exits the last card instead of it appearing "stuck"
-  const deckOpacity = useTransform(scrollYProgress, [0.82, 0.98], [1, 0]);
+  // Last card (index 6/7) fully arrives at progress ≈ 0.857
+  // Fade ONLY starts after that, so no card blurs while revealing
+  const deckOpacity = useTransform(scrollYProgress, [0.93, 0.99], [1, 0]);
+
+  // Scroll CTA fades in once all cards are revealed, fades out with deck
+  const ctaOpacity = useTransform(scrollYProgress, [0.86, 0.93, 0.99], [0, 1, 0]);
 
   return (
     <div className="block md:hidden">
-      {/* Sticky frame — heading + cards together, no empty space */}
-      <div ref={containerRef} className="relative h-[440vh]">
-        <div className="sticky top-14 h-[calc(100vh-3.5rem)] flex flex-col justify-center items-center px-3">
+      {/* Sticky frame */}
+      <div ref={containerRef} className="relative h-[380vh]">
+        <div className="sticky top-14 h-[calc(100vh-3.5rem)] flex flex-col pt-4 items-center px-3 overflow-hidden">
 
-          {/* Section heading inside the sticky frame */}
-          <div className="max-w-xl w-full mx-auto pb-3 text-center relative z-10 shrink-0">
+          {/* Section heading */}
+          <div className="max-w-xl w-full mx-auto pb-2 text-center relative z-10 shrink-0">
             <SectionHeading
               eyebrow="OUR SERVICES"
               title="Everything You Need to Build, Grow and Scale"
@@ -167,7 +170,7 @@ function MobileServicesStack({ services }: { services: Service[] }) {
             />
           </div>
 
-          {/* Card deck — overflow-hidden HERE clips cards entering from below */}
+          {/* Card deck — overflow-hidden clips cards entering from below */}
           <motion.div
             style={{ opacity: deckOpacity, height: "min(58vw, 220px)" }}
             className="relative w-full shrink-0 overflow-hidden"
@@ -183,6 +186,25 @@ function MobileServicesStack({ services }: { services: Service[] }) {
                 />
               ))}
             </div>
+          </motion.div>
+
+          {/* Scroll CTA — fills blank space below card, fades in after all cards revealed */}
+          <motion.div
+            style={{ opacity: ctaOpacity }}
+            className="mt-6 flex flex-col items-center gap-2 shrink-0 pointer-events-none"
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1677FF]">
+              Explore Our Work
+            </p>
+            <div className="flex flex-col items-center gap-1">
+              <div className="w-[2px] h-8 bg-gradient-to-b from-[#1677FF] to-transparent rounded-full" />
+              <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                <path d="M1 1L7 7L13 1" stroke="#1677FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <p className="text-[11px] text-[#52627A] text-center px-4">
+              Projects that create real value for businesses
+            </p>
           </motion.div>
 
         </div>
