@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { servicesData, Service } from "@/data/services";
 import ServiceLandscapeCard from "@/components/ServiceLandscapeCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -53,9 +55,8 @@ function DesktopStackedCardItem({
   );
 }
 
-
 /* ─────────────────────────────────────────────
-   DESKTOP layout (md and above) — unchanged & working
+   DESKTOP layout (md and above) — 3D sticky stack
 ───────────────────────────────────────────── */
 function DesktopServicesStack({ services }: { services: Service[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -66,19 +67,22 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
 
   return (
     <div className="hidden md:block">
-      {/* Heading in normal flow */}
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-16 pb-6 text-center relative z-10">
-        <SectionHeading
-          eyebrow="OUR SERVICES"
-          title="Everything You Need to Build, Grow and Scale"
-          subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
-        />
-      </div>
-
-      {/* Sticky cards container */}
+      {/* Outer scroll track */}
       <div ref={containerRef} className="relative h-[350vh] lg:h-[400vh]">
-        <div className="sticky top-20 h-[calc(100vh-5.5rem)] flex items-center justify-center overflow-hidden px-6 lg:px-8">
-          <div className="relative w-full max-w-3xl lg:max-w-5xl mx-auto aspect-[16/8.5] max-h-[76vh] shrink-0">
+        {/* Sticky frame pinned cleanly to top-20 */}
+        <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-between items-center overflow-hidden px-6 lg:px-8 py-3">
+
+          {/* Section Heading — pinned at top of frozen screen */}
+          <div className="max-w-4xl mx-auto text-center shrink-0 pt-2 pb-2">
+            <SectionHeading
+              eyebrow="OUR SERVICES"
+              title="Everything You Need to Build, Grow and Scale"
+              subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
+            />
+          </div>
+
+          {/* Cards Deck — pinned in center of frozen screen */}
+          <div className="relative w-full max-w-3xl lg:max-w-5xl mx-auto aspect-[16/8] max-h-[58vh] shrink-0 my-auto">
             {services.map((service, idx) => (
               <DesktopStackedCardItem
                 key={service.id}
@@ -89,6 +93,7 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
               />
             ))}
           </div>
+
         </div>
       </div>
     </div>
@@ -96,14 +101,13 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
 }
 
 /* ─────────────────────────────────────────────
-   MOBILE layout (< md) — clean, ultra-responsive scroll reveal stack
-   Cards reveal one by one on scroll with zero sticky height bugs or navbar overlap
+   MOBILE layout (< md) — ultra-responsive 3D scroll reveal stack
 ───────────────────────────────────────────── */
 function MobileServicesStack({ services }: { services: Service[] }) {
   return (
-    <div className="block md:hidden px-4 py-12">
+    <div className="block md:hidden px-4 py-10">
       {/* Section heading */}
-      <div className="max-w-xl mx-auto text-center pb-8">
+      <div className="max-w-xl mx-auto text-center pb-6">
         <SectionHeading
           eyebrow="OUR SERVICES"
           title="Everything You Need to Build, Grow and Scale"
@@ -111,20 +115,33 @@ function MobileServicesStack({ services }: { services: Service[] }) {
         />
       </div>
 
-      {/* Cards deck list with individual scroll reveal */}
+      {/* Mobile Services List with 3D perspective reveal */}
       <div className="space-y-6 max-w-sm mx-auto">
         {services.map((service, idx) => (
           <motion.div
             key={service.id}
-            initial={{ opacity: 0, y: 35, scale: 0.96 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative"
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="relative transform-gpu"
           >
             <ServiceLandscapeCard service={service} index={idx} total={services.length} />
           </motion.div>
         ))}
+      </div>
+
+      {/* Mobile CTA */}
+      <div className="mt-10 text-center">
+        <Link
+          href="/services"
+          className="inline-flex items-center justify-center px-6 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-[#1677FF] hover:bg-[#0D2854] shadow-md transition-all group"
+        >
+          <Sparkles className="w-4 h-4 mr-2 text-[#EEF6FF]" />
+          Explore All Services
+          <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
       </div>
     </div>
   );
@@ -142,10 +159,10 @@ export default function ServicesStackSection() {
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#EEF6FF] rounded-full blur-3xl opacity-60 pointer-events-none" />
 
-      {/* Desktop (md+): sticky stacking with landscape aspect-ratio card */}
+      {/* Desktop (md+): 3D sticky stacking */}
       <DesktopServicesStack services={featuredServices} />
 
-      {/* Mobile (< md): sticky stacking with portrait-friendly full-width card */}
+      {/* Mobile (< md): 3D scroll reveal stack */}
       <MobileServicesStack services={featuredServices} />
     </section>
   );

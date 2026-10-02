@@ -47,10 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} antialiased max-w-full overflow-x-hidden`}>
-      <body className="min-h-screen flex flex-col bg-white text-[#071A3A] selection:bg-[#EEF6FF] selection:text-[#1677FF] max-w-full overflow-x-hidden">
+    <html lang="en" className={`${jakarta.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-white text-[#071A3A] selection:bg-[#EEF6FF] selection:text-[#1677FF]">
         <Navbar />
-        <main className="flex-grow pt-20 max-w-full overflow-x-hidden">{children}</main>
+        <main className="flex-grow pt-20">{children}</main>
         <Footer />
       </body>
     </html>

@@ -65,7 +65,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT COLUMN: Synchronized 3D Bouncing Laptop & Mobile Hero Showcase */}
-            <div className="lg:col-span-6 relative flex justify-center items-center order-2 pt-6 lg:pt-0 max-w-full overflow-hidden">
+            <div className="lg:col-span-6 relative flex justify-center items-center order-2 pt-6 lg:pt-0">
 
               {/* Hero Devices Composite Container */}
               <div className="relative w-full max-w-2xl lg:max-w-3xl aspect-[1.25/1] flex items-center justify-center">
@@ -78,19 +78,19 @@ export default function Home() {
                     fill
                     sizes="(max-width: 1024px) 100vw, 60vw"
                     priority
-                    className="object-contain object-center scale-100 sm:scale-110 lg:scale-125"
+                    className="object-contain object-center scale-110 sm:scale-125"
                   />
                 </div>
 
                 {/* Mobile Phone Image (hero-mbl.png) with Synchronized 3D Animation */}
-                <div className="absolute right-0 sm:right-[-2%] bottom-0 sm:bottom-[-2%] w-[42%] h-[82%] z-20 animate-sync-mobile filter drop-shadow-[0_25px_45px_rgba(7,26,58,0.3)]">
+                <div className="absolute right-[-2%] sm:right-[-4%] bottom-[-2%] sm:bottom-[-4%] w-[42%] h-[82%] z-20 animate-sync-mobile filter drop-shadow-[0_25px_45px_rgba(7,26,58,0.3)]">
                   <Image
                     src="/hero-mbl.png"
                     alt="5Zen Mobile App Showcase"
                     fill
                     sizes="(max-width: 1024px) 45vw, 25vw"
                     priority
-                    className="object-contain object-center scale-100 sm:scale-105 lg:scale-110"
+                    className="object-contain object-center scale-105 sm:scale-110"
                   />
                 </div>
 
