@@ -56,7 +56,7 @@ function DesktopStackedCardItem({
 }
 
 /* ─────────────────────────────────────────────
-   DESKTOP layout (md and above) — 3D sticky stack
+   DESKTOP layout (md and above) — unchanged & working
 ───────────────────────────────────────────── */
 function DesktopServicesStack({ services }: { services: Service[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -67,22 +67,19 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
 
   return (
     <div className="hidden md:block">
-      {/* Outer scroll track */}
+      {/* Heading in normal flow */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-16 pb-6 text-center relative z-10">
+        <SectionHeading
+          eyebrow="OUR SERVICES"
+          title="Everything You Need to Build, Grow and Scale"
+          subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
+        />
+      </div>
+
+      {/* Sticky cards container */}
       <div ref={containerRef} className="relative h-[350vh] lg:h-[400vh]">
-        {/* Sticky frame pinned cleanly to top-20 */}
-        <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-between items-center overflow-hidden px-6 lg:px-8 py-3">
-
-          {/* Section Heading — pinned at top of frozen screen */}
-          <div className="max-w-4xl mx-auto text-center shrink-0 pt-2 pb-2">
-            <SectionHeading
-              eyebrow="OUR SERVICES"
-              title="Everything You Need to Build, Grow and Scale"
-              subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
-            />
-          </div>
-
-          {/* Cards Deck — pinned in center of frozen screen */}
-          <div className="relative w-full max-w-3xl lg:max-w-5xl mx-auto aspect-[16/8] max-h-[58vh] shrink-0 my-auto">
+        <div className="sticky top-20 h-[calc(100vh-5.5rem)] flex items-center justify-center overflow-hidden px-6 lg:px-8">
+          <div className="relative w-full max-w-3xl lg:max-w-5xl mx-auto aspect-[16/8.5] max-h-[76vh] shrink-0">
             {services.map((service, idx) => (
               <DesktopStackedCardItem
                 key={service.id}
@@ -93,7 +90,6 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
               />
             ))}
           </div>
-
         </div>
       </div>
     </div>
@@ -154,15 +150,17 @@ export default function ServicesStackSection() {
   const featuredServices = servicesData;
 
   return (
-    <section className="relative border-b border-[#EEF6FF] bg-[#F7FAFF] overflow-hidden">
+    <section className="relative border-b border-[#EEF6FF] bg-[#F7FAFF]">
       {/* Ambient background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#EEF6FF] rounded-full blur-3xl opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-grid-pattern opacity-40" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#EEF6FF] rounded-full blur-3xl opacity-60" />
+      </div>
 
-      {/* Desktop (md+): 3D sticky stacking */}
+      {/* Desktop (md+): sticky stacking with landscape aspect-ratio card */}
       <DesktopServicesStack services={featuredServices} />
 
-      {/* Mobile (< md): 3D scroll reveal stack */}
+      {/* Mobile (< md): portrait-friendly scroll reveal stack */}
       <MobileServicesStack services={featuredServices} />
     </section>
   );
