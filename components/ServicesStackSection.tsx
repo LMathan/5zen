@@ -137,7 +137,7 @@ export default function ServicesStackSection() {
   const featuredServices = servicesData;
 
   return (
-    <section className="relative border-b border-[#EEF6FF] bg-[#F7FAFF]">
+    <section className="relative border-b border-[#EEF6FF] bg-[#F7FAFF] overflow-hidden">
       {/* Ambient background */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#EEF6FF] rounded-full blur-3xl opacity-60 pointer-events-none" />
