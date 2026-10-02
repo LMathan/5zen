@@ -53,48 +53,6 @@ function DesktopStackedCardItem({
   );
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE stacked card item — slides up from below
-───────────────────────────────────────────── */
-function MobileStackedCardItem({
-  service,
-  index,
-  total,
-  progress,
-}: {
-  service: Service;
-  index: number;
-  total: number;
-  progress: any;
-}) {
-  const step = 1 / total;
-  const startY = Math.max(0, (index - 0.8) * step);
-  const endY = index * step;
-  const scaleStartRange = index * step;
-  const scaleEndRange = 1;
-  const cardsBehindCount = total - 1 - index;
-  const targetScale = 1 - cardsBehindCount * 0.025;
-
-  const translateY = useTransform(
-    progress,
-    index === 0 ? [0, 0] : [startY, endY],
-    index === 0 ? ["0%", "0%"] : ["100%", "0%"]
-  );
-  const scale = useTransform(progress, [scaleStartRange, scaleEndRange], [1, targetScale]);
-
-  return (
-    <motion.div
-      style={{
-        y: translateY,
-        scale: index === total - 1 ? 1 : scale,
-        zIndex: index + 1,
-      }}
-      className="absolute inset-0 w-full h-full origin-top transform-gpu will-change-transform"
-    >
-      <ServiceLandscapeCard service={service} index={index} total={total} />
-    </motion.div>
-  );
-}
 
 /* ─────────────────────────────────────────────
    DESKTOP layout (md and above) — unchanged & working
@@ -138,6 +96,55 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
 }
 
 /* ─────────────────────────────────────────────
+   MOBILE stacked card item — slides up from below
+───────────────────────────────────────────── */
+function MobileStackedCardItem({
+  service,
+  index,
+  total,
+  progress,
+}: {
+  service: Service;
+  index: number;
+  total: number;
+  progress: any;
+}) {
+  const revealEnd = 0.78;
+  const step = revealEnd / (total - 1);
+
+  const startY = index === 0 ? 0 : Math.max(0, (index - 1) * step);
+  const endY = index === 0 ? 0 : index * step;
+
+  const cardsBehindCount = total - 1 - index;
+  const targetScale = 1 - cardsBehindCount * 0.025;
+
+  const translateY = useTransform(
+    progress,
+    index === 0 ? [0, 0] : [startY, endY],
+    index === 0 ? ["0%", "0%"] : ["100%", "0%"]
+  );
+
+  const scale = useTransform(
+    progress,
+    [index * step, revealEnd],
+    [1, targetScale]
+  );
+
+  return (
+    <motion.div
+      style={{
+        y: translateY,
+        scale: index === total - 1 ? 1 : scale,
+        zIndex: index + 1,
+      }}
+      className="absolute inset-0 w-full h-full origin-top transform-gpu will-change-transform"
+    >
+      <ServiceLandscapeCard service={service} index={index} total={total} />
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────
    MOBILE layout (< md) — portrait-optimized sticky stack
    Cards reveal one by one on scroll exactly like desktop
 ───────────────────────────────────────────── */
@@ -145,47 +152,42 @@ function MobileServicesStack({ services }: { services: Service[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    // "250px start" means progress=0 only after user scrolls 250px into the section
-    // This delays the freeze & card reveal so heading is visible first
-    offset: ["250px start", "end end"],
+    offset: ["start start", "end end"],
   });
 
-  // Smooth the raw scroll progress with spring physics so scroll-up and scroll-down
-  // feel identical in speed — no fast jump when reversing direction
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 90,
+    damping: 22,
     restDelta: 0.001,
   });
 
-  // Last card (index 6/7) fully arrives at progress ≈ 0.857
-  // Fade ONLY starts after that, so no card blurs while revealing
-  const deckOpacity = useTransform(smoothProgress, [0.93, 0.99], [1, 0]);
+  // Fade deck out before container un-sticks (0.90 to 0.96)
+  const deckOpacity = useTransform(smoothProgress, [0.90, 0.96], [1, 0]);
 
-  // Scroll CTA fades in once all cards are revealed, fades out with deck
-  const ctaOpacity = useTransform(smoothProgress, [0.86, 0.93, 0.99], [0, 1, 0]);
+  // Scroll CTA fades in once all cards reveal (0.78 to 0.85), fades out with deck
+  const ctaOpacity = useTransform(smoothProgress, [0.78, 0.85, 0.90, 0.96], [0, 1, 1, 0]);
 
   return (
     <div className="block md:hidden">
-      {/* Sticky frame */}
-      <div ref={containerRef} className="relative h-[380vh]">
-        <div className="sticky top-14 h-[calc(100vh-3.5rem)] flex flex-col pt-4 items-center px-3 overflow-hidden">
+      {/* Section heading in normal flow above sticky section */}
+      <div className="max-w-xl mx-auto px-4 pt-12 pb-6 text-center">
+        <SectionHeading
+          eyebrow="OUR SERVICES"
+          title="Everything You Need to Build, Grow and Scale"
+          subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
+        />
+      </div>
 
-          {/* Section heading */}
-          <div className="max-w-xl w-full mx-auto pb-2 text-center relative z-10 shrink-0">
-            <SectionHeading
-              eyebrow="OUR SERVICES"
-              title="Everything You Need to Build, Grow and Scale"
-              subtitle="From web applications and mobile software to cloud infrastructure and AI workflows, we engineer high-impact digital tools."
-            />
-          </div>
+      {/* Sticky container */}
+      <div ref={containerRef} className="relative h-[320vh]">
+        <div className="sticky top-16 h-[calc(100dvh-4.5rem)] flex flex-col items-center justify-center px-4 overflow-hidden">
 
-          {/* Card deck — overflow-hidden clips cards entering from below */}
+          {/* Card deck container */}
           <motion.div
-            style={{ opacity: deckOpacity, height: "min(58vw, 220px)" }}
-            className="relative w-full shrink-0 overflow-hidden"
+            style={{ opacity: deckOpacity }}
+            className="relative w-full max-w-sm mx-auto aspect-[16/9.5] shrink-0 overflow-hidden"
           >
-            <div className="relative w-full" style={{ height: "min(58vw, 220px)" }}>
+            <div className="relative w-full h-full">
               {services.map((service, idx) => (
                 <MobileStackedCardItem
                   key={service.id}
@@ -198,7 +200,7 @@ function MobileServicesStack({ services }: { services: Service[] }) {
             </div>
           </motion.div>
 
-          {/* Scroll CTA — fills blank space below card, fades in after all cards revealed */}
+          {/* Scroll CTA — centered under card deck */}
           <motion.div
             style={{ opacity: ctaOpacity }}
             className="mt-6 flex flex-col items-center gap-2 shrink-0 pointer-events-none"
