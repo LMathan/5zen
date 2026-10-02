@@ -145,7 +145,9 @@ function MobileServicesStack({ services }: { services: Service[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    // "250px start" means progress=0 only after user scrolls 250px into the section
+    // This delays the freeze & card reveal so heading is visible first
+    offset: ["250px start", "end end"],
   });
 
   // Last card (index 6/7) fully arrives at progress ≈ 0.857
