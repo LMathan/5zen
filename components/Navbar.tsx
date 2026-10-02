@@ -35,22 +35,22 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] bg-white transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-[#DCE7F5] shadow-soft py-3"
-          : "bg-white/80 backdrop-blur-sm py-4 border-b border-transparent"
+          ? "border-b border-[#DCE7F5] shadow-sm py-3"
+          : "border-b border-[#EEF6FF] py-3.5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative h-10 w-40 flex items-center">
+            <div className="relative h-9 sm:h-10 w-36 sm:w-40 flex items-center">
               <Image
                 src="/logo.png"
                 alt="5Zen Technologies Logo"
                 fill
-                sizes="160px"
+                sizes="(max-width: 640px) 144px, 160px"
                 priority
                 className="object-contain object-left transition-transform duration-300 group-hover:scale-105"
               />
@@ -92,13 +92,13 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#071A3A] hover:bg-[#EEF6FF] hover:text-[#1677FF] transition-colors"
+              className="p-2.5 rounded-xl text-[#071A3A] bg-[#F7FAFF] border border-[#DCE7F5] hover:bg-[#EEF6FF] hover:text-[#1677FF] active:scale-95 transition-all"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-[#1677FF]" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6 text-[#071A3A]" />
               )}
             </button>
           </div>
@@ -107,7 +107,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-[#DCE7F5] px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-5 duration-200">
+        <div className="md:hidden bg-white border-b border-[#DCE7F5] px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top-5 duration-200 max-h-[calc(100dvh-4rem)] overflow-y-auto">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -115,9 +115,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
                   isActive
-                    ? "text-[#1677FF] bg-[#EEF6FF] font-semibold"
+                    ? "text-[#1677FF] bg-[#EEF6FF]"
                     : "text-[#071A3A] hover:bg-[#F7FAFF] hover:text-[#1677FF]"
                 }`}
               >
@@ -125,11 +125,11 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="pt-2 border-t border-[#DCE7F5]">
+          <div className="pt-3 border-t border-[#DCE7F5]">
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full px-5 py-3 rounded-lg text-base font-medium text-white bg-[#1677FF] hover:bg-[#0D2854] shadow-md"
+              className="flex items-center justify-center w-full px-5 py-3.5 rounded-xl text-base font-bold text-white bg-[#1677FF] hover:bg-[#0D2854] shadow-md"
             >
               Start a Project
               <ArrowRight className="ml-2 w-5 h-5" />

@@ -47,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-[#071A3A] selection:bg-[#EEF6FF] selection:text-[#1677FF]">
+    <html lang="en" className={`${jakarta.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-white text-[#071A3A] selection:bg-[#EEF6FF] selection:text-[#1677FF]">
         <Navbar />
         <main className="flex-grow pt-20">{children}</main>
         <Footer />
