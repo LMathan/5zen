@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { servicesData, Service } from "@/data/services";
 import ServiceLandscapeCard from "@/components/ServiceLandscapeCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -150,12 +150,20 @@ function MobileServicesStack({ services }: { services: Service[] }) {
     offset: ["250px start", "end end"],
   });
 
+  // Smooth the raw scroll progress with spring physics so scroll-up and scroll-down
+  // feel identical in speed — no fast jump when reversing direction
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
   // Last card (index 6/7) fully arrives at progress ≈ 0.857
   // Fade ONLY starts after that, so no card blurs while revealing
-  const deckOpacity = useTransform(scrollYProgress, [0.93, 0.99], [1, 0]);
+  const deckOpacity = useTransform(smoothProgress, [0.93, 0.99], [1, 0]);
 
   // Scroll CTA fades in once all cards are revealed, fades out with deck
-  const ctaOpacity = useTransform(scrollYProgress, [0.86, 0.93, 0.99], [0, 1, 0]);
+  const ctaOpacity = useTransform(smoothProgress, [0.86, 0.93, 0.99], [0, 1, 0]);
 
   return (
     <div className="block md:hidden">
@@ -184,7 +192,7 @@ function MobileServicesStack({ services }: { services: Service[] }) {
                   service={service}
                   index={idx}
                   total={services.length}
-                  progress={scrollYProgress}
+                  progress={smoothProgress}
                 />
               ))}
             </div>
