@@ -36,7 +36,6 @@ export const projectsData: Project[] = [
     projectType: "Website Redevelopment",
     client: "Bali Droom Villas",
     duration: "2 Months",
-    liveUrl: "https://balidroomvillas.com",
     features: [
       "Modern and premium UI/UX design",
       "Fully responsive layout for all devices",

@@ -7,6 +7,7 @@ export interface Product {
   status: 'Available' | 'In Development' | 'Prototype';
   platformBadge: string;
   image: string;
+  playStoreUrl?: string;
   features: string[];
 }
 
@@ -19,7 +20,8 @@ export const productsData: Product[] = [
     category: "Financial Technology",
     status: "Available",
     platformBadge: "Play Store",
-    image: "/projects/expense-mate.png",
+    image: "/projects/ExpenseMate App Showcase.png",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=app.skillforge.expensemate",
     features: [
       "Quick 2-step expense and income entry",
       "Category budgeting with monthly spending limits",
@@ -33,29 +35,15 @@ export const productsData: Product[] = [
     subtitle: "College Bus Tracking",
     description: "Real-time bus tracking and route management platform created for university students, campus drivers, and transport administrators.",
     category: "Mobility & Logistics",
-    status: "In Development",
-    platformBadge: "Coming Soon",
-    image: "/projects/mavio.png",
+    status: "Available",
+    platformBadge: "Play Store",
+    image: "/projects/MAVIO Smart College Transport Dashboard.png",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=app.skillforge.mavio",
     features: [
       "Live GPS bus location map for students",
       "Estimated arrival times (ETA) per campus stop",
       "Driver management application & route toggle",
       "Admin alert dashboard for transport coordinators"
-    ]
-  },
-  {
-    id: "sightaid",
-    name: "SightAid",
-    subtitle: "Assistive Technology Project",
-    description: "AI-powered assistance for visually impaired users designed to provide voice notifications and object assistance for daily independence.",
-    category: "Assistive Tech",
-    status: "In Development",
-    platformBadge: "Prototype",
-    image: "/projects/sightaid.png",
-    features: [
-      "Real-time object & barrier detection alerts",
-      "Auditory feedback & voice navigation UI",
-      "Lightweight smartphone & wearable integration"
     ]
   }
 ];

@@ -1,11 +1,10 @@
 import { productsData } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
-import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 
 export const metadata = {
   title: "Products",
-  description: "Explore 5Zen Technologies software products and platforms built to address real-world financial, transportation, and assistive tech requirements.",
+  description: "Explore 5Zen Technologies software products and platforms built for financial tracking and college transport management.",
 };
 
 export default function ProductsPage() {
@@ -25,8 +24,8 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {productsData.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
