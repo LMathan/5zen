@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import VideoPreloader from "@/components/VideoPreloader";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} antialiased`}>
       <body className="min-h-screen flex flex-col bg-white text-[#071A3A] selection:bg-[#EEF6FF] selection:text-[#1677FF]">
+        <VideoPreloader />
         <Navbar />
         <main className="flex-grow pt-20">{children}</main>
         <Footer />

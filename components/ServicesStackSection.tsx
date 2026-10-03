@@ -36,6 +36,19 @@ function DesktopStackedCardItem({
     index === 0 ? [0, 0] : [startY, endY],
     index === 0 ? ["0%", "0%"] : ["100%", "0%"]
   );
+
+  const opacity = useTransform(
+    progress,
+    index === 0
+      ? [0, 1]
+      : [0, Math.max(0, startY - 0.01), startY + (endY - startY) * 0.35],
+    index === 0 ? [1, 1] : [0, 0, 1]
+  );
+
+  const pointerEvents = useTransform(progress, (p: number) =>
+    index === 0 || p >= startY ? "auto" : "none"
+  );
+
   const scale = useTransform(progress, [scaleStartRange, scaleEndRange], [1, targetScale]);
   const yShift = useTransform(progress, [scaleStartRange, scaleEndRange], [0, targetYOffset]);
 
@@ -43,6 +56,8 @@ function DesktopStackedCardItem({
     <motion.div
       style={{
         y: translateY,
+        opacity: index === 0 ? 1 : opacity,
+        pointerEvents: pointerEvents as any,
         scale: index === total - 1 ? 1 : scale,
         zIndex: index + 1,
       }}
