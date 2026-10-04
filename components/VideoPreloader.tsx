@@ -7,25 +7,37 @@ const CRITICAL_ASSETS = [
   "/hero-bg1.png",
   "/hero-lap.png",
   "/hero-mbl.png",
-  "/service/Digital Marketing Dashboard Growth.png",
-  "/service/Web Development Showcase.png",
+  "/Abt.png",
+  "/logo.png",
+  "/footer-logo1.png",
+  // All Project Portfolio Cards
+  "/projects/Bali-web.png",
+  "/projects/Gen B Bike Care Mockup.png",
+  "/projects/ExpenseMate App Showcase.png",
+  "/projects/MAVIO Smart College Transport Dashboard.png",
+  "/projects/SpiceHaven Restaurant Website Mockup.png",
+  "/projects/Organic E-Commerce Showcase Mockup.png",
+  // All Service Section Graphics
+  "/service/Web Development Glassmorphism Hero Card.png",
   "/service/Mobile App Development Showcase.png",
-  "/service/Custom Software Architecture.png",
-  "/service/SaaS Platform Engineering.png",
-  "/service/AI Automation Workflow.png",
+  "/service/Custom Software Tech Showcase.png",
+  "/service/SaaS Development Dashboard Showcase.png",
+  "/service/AI & Automation Workflow Hero.png",
+  "/service/Futuristic Cloud Solutions Dashboard.png",
+  "/service/Digital Marketing Dashboard Growth.png",
 ];
 
 export default function VideoPreloader() {
   const [isVisible, setIsVisible] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [bgColor, setBgColor] = useState<string>("#EAEAEA"); // Fallback matched off-white
+  const [bgColor, setBgColor] = useState<string>("#EAEAEA");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Lock body scrolling while preloader is active
     document.body.style.overflow = "hidden";
 
-    // Preload critical images in background
+    // Preload ALL critical image assets into browser cache during preloader video
     CRITICAL_ASSETS.forEach((src) => {
       const img = new Image();
       img.src = src;
@@ -59,7 +71,6 @@ export default function VideoPreloader() {
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(video, 0, 0);
-          // Sample corner pixels (top-left & top-right)
           const p1 = ctx.getImageData(10, 10, 1, 1).data;
           const p2 = ctx.getImageData(video.videoWidth - 10, 10, 1, 1).data;
           const r = Math.round((p1[0] + p2[0]) / 2);
@@ -70,7 +81,7 @@ export default function VideoPreloader() {
           }
         }
       }
-    } catch (e) {
+    } catch {
       // Ignore cross-origin canvas security if any
     }
   };

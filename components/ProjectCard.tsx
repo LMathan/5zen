@@ -5,9 +5,10 @@ import { ArrowUpRight } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
+  priority?: boolean;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, priority = true }: ProjectCardProps) {
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -15,11 +16,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       <div className="h-full bg-white rounded-xl overflow-hidden border border-[#DCE7F5] shadow-soft shadow-hover flex flex-col justify-between">
         {/* Thumbnail Container */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#F7FAFF]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#EEF6FF]">
           <Image
             src={project.thumbnail}
             alt={project.name}
             fill
+            priority={priority}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
