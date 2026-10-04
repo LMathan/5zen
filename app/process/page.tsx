@@ -3,9 +3,22 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import CTASection from "@/components/CTASection";
 import { MessageSquare, Cpu, ShieldCheck, HeartHandshake } from "lucide-react";
 
-export const metadata = {
-  title: "How We Work",
-  description: "Learn about 5Zen Technologies transparent 5-step software development methodology from requirement analysis to launch.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Software Development Process & Methodology | 5Zen Technologies",
+  description:
+    "Learn about 5Zen Technologies transparent 5-step software development process from requirement discovery to architecture, agile engineering, QA, and launch.",
+  alternates: {
+    canonical: "https://5zentech.com/process",
+  },
+  openGraph: {
+    title: "Software Development Process | 5Zen Technologies",
+    description:
+      "A simple, structured, and transparent process designed to turn business ideas into reliable software products.",
+    url: "https://5zentech.com/process",
+    type: "website",
+  },
 };
 
 const principles = [

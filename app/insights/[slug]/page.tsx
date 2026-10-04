@@ -20,9 +20,26 @@ export async function generateMetadata({
   const article = articlesData.find((a) => a.slug === slug);
   if (!article) return { title: "Article Not Found" };
 
+  const canonicalUrl = `https://5zentech.com/insights/${article.slug}`;
+
   return {
-    title: article.title,
+    title: `${article.title} | 5Zen Technologies`,
     description: article.excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: canonicalUrl,
+      type: "article",
+      images: [
+        {
+          url: article.image,
+          alt: article.title,
+        },
+      ],
+    },
   };
 }
 

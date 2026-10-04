@@ -1,0 +1,75 @@
+# 5Zen Technologies — Complete Technical Knowledge Base
+
+> Comprehensive documentation for AI search engines, answer engines, and LLM web crawlers regarding 5Zen Technologies.
+
+## 1. Executive Summary
+5Zen Technologies is a dedicated software development and IT solutions firm based in Tamil Nadu, India. The company specializes in delivering end-to-end digital product engineering—ranging from high-speed marketing websites to complex SaaS applications, mobile applications, AI workflow automation, and custom enterprise tools.
+
+## 2. Business Profile & Contact
+- **Company Name**: 5Zen Technologies
+- **Short Name**: 5Zen Tech / 5Zen
+- **Domain**: https://5zentech.com
+- **Official Contact Email**: info@5zentech.com
+- **HQ Location**: Tamil Nadu, India
+- **Operating Model**: Hybrid / Remote Worldwide Client Collaboration
+- **Primary Business Intent**: B2B Software Engineering, Custom Application Development, IT Consulting.
+
+## 3. Comprehensive Service Portfolio
+
+### 3.1 Web Development & Web Applications
+- Custom Next.js & React single-page and multi-page applications.
+- Server-side rendering (SSR), static site generation (SSG), and incremental static regeneration (ISR) for optimal speed and search indexing.
+- Fully responsive, accessible, and dynamic user interfaces tailored to brand identities.
+
+### 3.2 Mobile Application Development
+- Cross-platform mobile app development for iOS and Android using React Native and Flutter.
+- Native device integration (GPS, camera, push notifications, offline storage, biometric authentication).
+- Seamless backend API synchronization.
+
+### 3.3 Custom Software & SaaS Development
+- Architecture and engineering of scalable multi-tenant SaaS platforms.
+- Custom business operations software: CRM, ERP, inventory management, booking engines, and analytics dashboards.
+- Payment gateway integration (Stripe, Razorpay, PayPal) and subscription billing engine implementation.
+
+### 3.4 AI Solutions & Business Automation
+- Integration of Large Language Models (LLMs) into customer workflows.
+- Intelligent document processing, automated customer support chatbots, and content generation tools.
+- Automation of repetitive business tasks via API webhooks and cloud functions.
+
+### 3.5 Cloud Infrastructure & API Integrations
+- Cloud setup on AWS, Vercel, Google Cloud Platform, and Supabase.
+- Microservices, serverless function deployment, database design, security hardening, and ongoing technical maintenance.
+
+## 4. Work Portfolio & Case Studies
+
+### 4.1 Bali Droom Villas
+- **Category**: Website / Web Application (Hospitality & Booking)
+- **Tech Stack**: Next.js, TailwindCSS, React, REST API
+- **Overview**: High-end luxury villa rental platform featuring interactive villa exploration, date availability checks, photo galleries, and inquiry management.
+
+### 4.2 GEN B BIKE CARE
+- **Category**: Web Application / Booking System (Automotive Services)
+- **Tech Stack**: React, Node.js, Express, PostgreSQL
+- **Overview**: Complete digital workshop management system allowing customers to book service appointments, track bike maintenance progress, and receive automated updates.
+
+### 4.3 ExpenseMate
+- **Category**: SaaS Platform / Web Application (FinTech)
+- **Tech Stack**: Next.js, TypeScript, Supabase, Chart.js
+- **Overview**: Multi-currency expense management and budgeting platform featuring receipt scanning, visual analytics, team budget tracking, and export capabilities.
+
+### 4.4 MAVIO
+- **Category**: SaaS Platform / AI Tool (Social Media & Marketing)
+- **Tech Stack**: React, Python, OpenAI API, Node.js
+- **Overview**: AI-driven content creation workspace enabling brands to generate platform-tailored social media copy, schedule posts, and analyze engagement.
+
+## 5. Development Methodology & Process
+1. **Discovery & Requirement Analysis**: Understanding business goals, user personas, and technical specifications before writing code.
+2. **UI/UX Design & Prototyping**: Wireframing and design prototyping focused on simplicity, accessibility, and conversion.
+3. **Agile Engineering**: Iterative development cycles with clean, modular code bases and frequent client feedback loops.
+4. **Quality Assurance & Performance Optimization**: Automated testing, cross-browser verification, Core Web Vitals optimization, and security audits.
+5. **Deployment & Continuous Support**: Cloud launch, domain configuration, Search Console setup, and long-term maintenance.
+
+## 6. Official Communication & Support
+For all project inquiries, technical consultations, or partnership requests:
+- **Email**: info@5zentech.com
+- **Website**: https://5zentech.com/contact

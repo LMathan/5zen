@@ -1,0 +1,48 @@
+# 5Zen Technologies
+
+> 5Zen Technologies is a modern IT and software solutions company based in Tamil Nadu, India. We design and develop custom websites, web applications, mobile applications, SaaS platforms, AI-powered solutions, and digital automation systems for businesses worldwide.
+
+## Company Identity
+- **Legal Name**: 5Zen Technologies
+- **Short Name**: 5Zen Tech / 5Zen
+- **Primary Domain**: https://5zentech.com
+- **Official Contact Email**: info@5zentech.com
+- **Location**: Tamil Nadu, India (Remote Worldwide)
+- **Tagline**: Connect. Create. Elevate.
+
+## Core Capabilities & Services
+- **Web Development**: Custom high-performance websites built with Next.js, React, TypeScript, and modern CSS. Fully responsive, SEO-optimized, and lightning fast.
+- **Web Application Development**: Full-stack web applications, custom dashboards, client portals, and administrative platforms.
+- **Mobile Application Development**: iOS and Android mobile app development using React Native and Flutter.
+- **Custom Software Development**: Enterprise software, specialized business tools, custom CRM/ERP integrations, and database architectures.
+- **SaaS Development**: Multi-tenant SaaS platforms, subscription management, payment gateway integration, and scalable cloud architectures.
+- **AI & Business Automation**: Custom AI-powered tools, LLM integrations, document parsing, workflow automation, and intelligent chatbots.
+- **Cloud Solutions**: Infrastructure setup, API development, cloud deployment (Vercel, AWS, GCP), and technical maintenance.
+
+## Key Verified Case Studies & Projects
+- **Bali Droom Villas**: Modern luxury villa booking & rental platform.
+- **GEN B BIKE CARE**: Digital bike service booking & workshop management system.
+- **ExpenseMate**: Smart multi-currency personal & team expense tracker.
+- **MAVIO**: AI-powered social media post generator and content scheduling SaaS.
+- **Restaurant Booking System**: Real-time table reservation and online menu management system.
+- **E-Commerce Solution**: Scalable multi-category e-commerce storefront with payment processing.
+
+## Technology Stack
+- **Frontend**: Next.js (App Router), React, TypeScript, TailwindCSS, HTML5, CSS3.
+- **Backend & APIs**: Node.js, Express, Python, REST APIs, GraphQL.
+- **Databases & Storage**: PostgreSQL, MongoDB, Supabase, Redis.
+- **Deployment & Cloud**: Vercel, AWS, Google Cloud Platform, Docker.
+
+## Official Links
+- [Homepage](https://5zentech.com)
+- [About Us](https://5zentech.com/about)
+- [Services](https://5zentech.com/services)
+- [Portfolio & Work](https://5zentech.com/work)
+- [Products](https://5zentech.com/products)
+- [Process](https://5zentech.com/process)
+- [Insights & Blog](https://5zentech.com/insights)
+- [Contact Us](https://5zentech.com/contact)
+
+## Contact Information
+- **Email**: info@5zentech.com
+- **Inquiry Form**: https://5zentech.com/contact

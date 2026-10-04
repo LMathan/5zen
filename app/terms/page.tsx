@@ -1,6 +1,11 @@
-export const metadata = {
-  title: "Terms & Conditions",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | 5Zen Technologies",
   description: "Terms and conditions for using 5Zen Technologies website and services.",
+  alternates: {
+    canonical: "https://5zentech.com/terms",
+  },
 };
 
 export default function TermsPage() {

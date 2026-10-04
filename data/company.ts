@@ -12,7 +12,7 @@ export const companyInfo = {
   vision: "To build a trusted technology company known for thoughtful products, reliable development and long-term partnerships.",
 
   contact: {
-    email: "5zentechnologies@gmail.com",
+    email: "info@5zentech.com",
     phone: "+91 98765 43210",
     location: "TamilNadu, India / Remote Worldwide",
     hours: "Monday - Friday: 9:00 AM - 6:00 PM IST"

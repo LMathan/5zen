@@ -1,6 +1,11 @@
-export const metadata = {
-  title: "Privacy Policy",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | 5Zen Technologies",
   description: "Privacy policy and data protection guidelines for 5Zen Technologies.",
+  alternates: {
+    canonical: "https://5zentech.com/privacy",
+  },
 };
 
 export default function PrivacyPage() {
@@ -29,7 +34,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-lg font-bold text-[#071A3A]">4. Contact Us</h2>
         <p>
-          If you have questions regarding our privacy practices, contact us at contact@5zentech.com.
+          If you have questions regarding our privacy practices, contact us at info@5zentech.com.
         </p>
       </div>
     </div>

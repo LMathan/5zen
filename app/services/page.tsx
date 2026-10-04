@@ -15,9 +15,22 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Services",
-  description: "Explore 5Zen Technologies software services including web development, mobile app development, custom software, SaaS platforms, AI & automation, and cloud solutions.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Software Development Services | Web, Mobile, SaaS & AI",
+  description:
+    "Explore 5Zen Technologies software services including web development, mobile app development, custom software engineering, SaaS platforms, AI automation, and cloud solutions.",
+  alternates: {
+    canonical: "https://5zentech.com/services",
+  },
+  openGraph: {
+    title: "Software Development Services | 5Zen Technologies",
+    description:
+      "Modern technology solutions for your business: Web Development, Mobile Apps, Custom Software, SaaS Platforms, AI & Automation, Cloud Solutions.",
+    url: "https://5zentech.com/services",
+    type: "website",
+  },
 };
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {

@@ -29,9 +29,26 @@ export async function generateMetadata({
   const project = projectsData.find((p) => p.slug === slug);
   if (!project) return { title: "Project Not Found" };
 
+  const canonicalUrl = `https://5zentech.com/work/${project.slug}`;
+
   return {
-    title: `${project.name} | Case Study`,
+    title: `${project.name} | Portfolio Case Study | 5Zen Technologies`,
     description: project.shortDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${project.name} | Case Study | 5Zen Technologies`,
+      description: project.shortDescription,
+      url: canonicalUrl,
+      type: "article",
+      images: [
+        {
+          url: project.heroImage || project.thumbnail,
+          alt: project.name,
+        },
+      ],
+    },
   };
 }
 

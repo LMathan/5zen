@@ -5,9 +5,22 @@ import SectionHeading from "@/components/SectionHeading";
 import CTASection from "@/components/CTASection";
 import { Target, Compass, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 
-export const metadata = {
-  title: "About Us",
-  description: "Learn about 5Zen Technologies — a modern software development company focused on building practical web, mobile, SaaS, and AI digital solutions.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About 5Zen Technologies | Software Engineering & Tech Solutions",
+  description:
+    "Learn about 5Zen Technologies — a modern software development company in Tamil Nadu, India focused on building practical web, mobile, SaaS, and AI digital solutions.",
+  alternates: {
+    canonical: "https://5zentech.com/about",
+  },
+  openGraph: {
+    title: "About 5Zen Technologies | Software Engineering & Tech Solutions",
+    description:
+      "A team of passionate developers and problem solvers building technology for a smarter future.",
+    url: "https://5zentech.com/about",
+    type: "website",
+  },
 };
 
 const journeyMilestones = [

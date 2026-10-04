@@ -2,9 +2,22 @@ import { productsData } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import CTASection from "@/components/CTASection";
 
-export const metadata = {
-  title: "Products",
-  description: "Explore 5Zen Technologies software products and platforms built for financial tracking and college transport management.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Digital Products & SaaS Platforms | 5Zen Technologies",
+  description:
+    "Explore 5Zen Technologies software products and SaaS platforms built for expense management, automation, and transport logistics.",
+  alternates: {
+    canonical: "https://5zentech.com/products",
+  },
+  openGraph: {
+    title: "Digital Products & SaaS Platforms | 5Zen Technologies",
+    description:
+      "Innovative digital products and software platforms developed by 5Zen Technologies.",
+    url: "https://5zentech.com/products",
+    type: "website",
+  },
 };
 
 export default function ProductsPage() {

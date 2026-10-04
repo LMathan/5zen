@@ -2,9 +2,22 @@ import { articlesData } from "@/data/insights";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
 
-export const metadata = {
-  title: "Insights & Updates",
-  description: "Read technical articles, web development guides, and software engineering insights from 5Zen Technologies.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tech Insights & Web Development Articles | 5Zen Technologies",
+  description:
+    "Read technical articles, web development best practices, AI automation guides, and software engineering insights from 5Zen Technologies.",
+  alternates: {
+    canonical: "https://5zentech.com/insights",
+  },
+  openGraph: {
+    title: "Tech Insights & Web Development Articles | 5Zen Technologies",
+    description:
+      "Our thoughts on software architecture, web development, mobile technologies, and AI automation.",
+    url: "https://5zentech.com/insights",
+    type: "website",
+  },
 };
 
 export default function InsightsPage() {
