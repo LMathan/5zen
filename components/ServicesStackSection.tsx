@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { servicesData, Service } from "@/data/services";
@@ -9,7 +9,7 @@ import ServiceLandscapeCard from "@/components/ServiceLandscapeCard";
 import SectionHeading from "@/components/SectionHeading";
 
 /* ─────────────────────────────────────────────
-   DESKTOP stacked card item (working perfectly on laptop)
+   DESKTOP stacked card item with smooth spring motion
 ───────────────────────────────────────────── */
 function DesktopStackedCardItem({
   service,
@@ -23,13 +23,14 @@ function DesktopStackedCardItem({
   progress: any;
 }) {
   const step = 1 / total;
-  const startY = Math.max(0, (index - 0.75) * step);
+  // Give each card a longer resting plateau so it stays steady in view while scrolling
+  const startY = Math.max(0, (index - 0.65) * step);
   const endY = index * step;
   const scaleStartRange = index * step;
   const scaleEndRange = 1;
   const cardsBehindCount = total - 1 - index;
-  const targetScale = 1 - cardsBehindCount * 0.02;
-  const targetYOffset = -cardsBehindCount * 6;
+  const targetScale = 1 - cardsBehindCount * 0.025;
+  const targetYOffset = -cardsBehindCount * 8;
 
   const translateY = useTransform(
     progress,
@@ -41,7 +42,7 @@ function DesktopStackedCardItem({
     progress,
     index === 0
       ? [0, 1]
-      : [0, Math.max(0, startY - 0.01), startY + (endY - startY) * 0.35],
+      : [0, Math.max(0, startY - 0.01), startY + (endY - startY) * 0.4],
     index === 0 ? [1, 1] : [0, 0, 1]
   );
 
@@ -71,13 +72,21 @@ function DesktopStackedCardItem({
 }
 
 /* ─────────────────────────────────────────────
-   DESKTOP layout (md and above) — unchanged & working
+   DESKTOP layout (md and above) — Extended scroll height
 ───────────────────────────────────────────── */
 function DesktopServicesStack({ services }: { services: Service[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
+  });
+
+  // Apply smooth physics to prevent fast mouse wheel jumps
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 70,
+    damping: 24,
+    restDelta: 0.001,
   });
 
   return (
@@ -91,9 +100,11 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
         />
       </div>
 
-      {/* Sticky cards container */}
-      <div ref={containerRef} className="relative h-[350vh] lg:h-[400vh]">
+      {/* Extended height sticky cards container for relaxed scroll pacing */}
+      <div ref={containerRef} className="relative h-[650vh] lg:h-[750vh]">
         <div className="sticky top-20 h-[calc(100vh-5.5rem)] flex items-center justify-center overflow-hidden px-6 lg:px-8">
+          
+          {/* Stacked Cards Frame */}
           <div className="relative w-full max-w-3xl lg:max-w-5xl mx-auto aspect-[16/8.5] max-h-[76vh] shrink-0">
             {services.map((service, idx) => (
               <DesktopStackedCardItem
@@ -101,10 +112,11 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
                 service={service}
                 index={idx}
                 total={services.length}
-                progress={scrollYProgress}
+                progress={smoothProgress}
               />
             ))}
           </div>
+
         </div>
       </div>
     </div>
@@ -112,7 +124,7 @@ function DesktopServicesStack({ services }: { services: Service[] }) {
 }
 
 /* ─────────────────────────────────────────────
-   MOBILE layout (< md) — ultra-responsive 3D scroll reveal stack
+   MOBILE layout (< md) — 3D scroll reveal stack
 ───────────────────────────────────────────── */
 function MobileServicesStack({ services }: { services: Service[] }) {
   return (

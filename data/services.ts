@@ -19,7 +19,7 @@ export const servicesData: Service[] = [
     iconName: "Globe",
     shortDescription: "Modern, responsive websites and web applications designed around your business goals and user needs.",
     fullDescription: "We build modern, high-performance websites and web applications using cutting-edge technologies like Next.js, React, and TypeScript. Our focus is delivering fast loading speeds, exceptional mobile responsiveness, clean accessibility, and intuitive user experiences.",
-    image: "/service/Web Development Glassmorphism Hero Card.png",
+    image: "/service/Web Development Glassmorphism Hero Card.webp",
     capabilities: [
       "Custom Business Websites",
       "Progressive Web Applications (PWA)",
@@ -42,7 +42,7 @@ export const servicesData: Service[] = [
     iconName: "Smartphone",
     shortDescription: "Android and iOS applications designed for practical, intuitive user experiences and daily business operations.",
     fullDescription: "We design and develop cross-platform and native mobile applications tailored for real-world business requirements. Our mobile solutions combine fluid navigation, offline sync capability, secure authentication, and sleek interface design.",
-    image: "/service/Mobile App Development Showcase.png",
+    image: "/service/Mobile App Development Showcase.webp",
     capabilities: [
       "Cross-Platform iOS & Android Apps",
       "Native App Development",
@@ -65,7 +65,7 @@ export const servicesData: Service[] = [
     iconName: "Code2",
     shortDescription: "Business-specific software designed around workflows, requirements and operational efficiency.",
     fullDescription: "Every business has unique operational needs. We engineer bespoke software systems that automate manual tasks, centralize data management, and streamline team workflows without unnecessary complexity.",
-    image: "/service/Custom Software Tech Showcase.png",
+    image: "/service/Custom Software Tech Showcase.webp",
     capabilities: [
       "Custom Business Dashboards",
       "Workflow & ERP Systems",
@@ -88,7 +88,7 @@ export const servicesData: Service[] = [
     iconName: "Layers",
     shortDescription: "Scalable platforms for growing businesses and cloud-based software applications.",
     fullDescription: "From multi-tenant architecture to subscription billing and administrative control panels, we design and launch cloud-based Software as a Service platforms built to scale reliably as user adoption expands.",
-    image: "/service/SaaS Development Dashboard Showcase.png",
+    image: "/service/SaaS Development Dashboard Showcase.webp",
     capabilities: [
       "Multi-tenant SaaS Architecture",
       "Subscription & Billing Gateway Integration",
@@ -111,7 +111,7 @@ export const servicesData: Service[] = [
     iconName: "Bot",
     shortDescription: "AI-powered tools and workflow automation designed to reduce repetitive work and improve experiences.",
     fullDescription: "We integrate practical AI capabilities and automated workflow pipelines into business applications—helping teams save hours of manual data entry, enhance customer support, and extract meaningful insights.",
-    image: "/service/AI & Automation Workflow Hero.png",
+    image: "/service/AI & Automation Workflow Hero.webp",
     capabilities: [
       "AI Assistant & Chatbot Integration",
       "Workflow & Document Automation",
@@ -134,7 +134,7 @@ export const servicesData: Service[] = [
     iconName: "Cloud",
     shortDescription: "Deployment, infrastructure setup and cloud-based applications tailored for performance.",
     fullDescription: "We help companies deploy, host, and manage digital products in secure cloud environments with high availability, automated backups, and scalable infrastructure setup.",
-    image: "/service/Futuristic Cloud Solutions Dashboard.png",
+    image: "/service/Futuristic Cloud Solutions Dashboard.webp",
     capabilities: [
       "Cloud Infrastructure Setup (AWS / Vercel / GCP)",
       "Database Management & Backup Systems",
@@ -157,7 +157,7 @@ export const servicesData: Service[] = [
     iconName: "TrendingUp",
     shortDescription: "Digital presence and growth solutions aligned with business goals.",
     fullDescription: "We provide technical SEO, digital strategy, brand identity implementation, and web analytics setups that help your business establish a strong online presence and reach your target audience effectively.",
-    image: "/service/Digital Marketing Dashboard Growth.png",
+    image: "/service/Digital Marketing Dashboard Growth.webp",
     capabilities: [
       "Technical SEO & On-Page Optimization",
       "Google Analytics & Event Tracking",

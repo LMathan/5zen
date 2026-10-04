@@ -19,7 +19,7 @@ export default function Home() {
         {/* Full Cover Background Image */}
         <div className="absolute inset-0 -z-10 w-full h-full overflow-hidden">
           <Image
-            src="/hero-bg1.png"
+            src="/hero-bg1.webp"
             alt="5Zen Hero Background"
             fill
             sizes="100vw"
@@ -70,10 +70,10 @@ export default function Home() {
               {/* Hero Devices Composite Container */}
               <div className="relative w-full max-w-2xl lg:max-w-3xl aspect-[1.25/1] flex items-center justify-center">
 
-                {/* Laptop Image (hero-lap.png) with Synchronized 3D Animation */}
+                {/* Laptop Image (hero-lap.webp) with Synchronized 3D Animation */}
                 <div className="relative w-full h-full animate-sync-laptop filter drop-shadow-[0_20px_40px_rgba(7,26,58,0.25)] z-10">
                   <Image
-                    src="/hero-lap.png"
+                    src="/hero-lap.webp"
                     alt="5Zen Laptop Showcase"
                     fill
                     sizes="(max-width: 1024px) 100vw, 60vw"
@@ -82,10 +82,10 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Mobile Phone Image (hero-mbl.png) with Synchronized 3D Animation */}
+                {/* Mobile Phone Image (hero-mbl.webp) with Synchronized 3D Animation */}
                 <div className="absolute right-[-2%] sm:right-[-4%] bottom-[-2%] sm:bottom-[-4%] w-[42%] h-[82%] z-20 animate-sync-mobile filter drop-shadow-[0_25px_45px_rgba(7,26,58,0.3)]">
                   <Image
-                    src="/hero-mbl.png"
+                    src="/hero-mbl.webp"
                     alt="5Zen Mobile App Showcase"
                     fill
                     sizes="(max-width: 1024px) 45vw, 25vw"

@@ -20,7 +20,7 @@ export const productsData: Product[] = [
     category: "Financial Technology",
     status: "Available",
     platformBadge: "Play Store",
-    image: "/projects/ExpenseMate App Showcase.png",
+    image: "/projects/ExpenseMate App Showcase.webp",
     playStoreUrl: "https://play.google.com/store/apps/details?id=app.skillforge.expensemate",
     features: [
       "Quick 2-step expense and income entry",
@@ -37,7 +37,7 @@ export const productsData: Product[] = [
     category: "Mobility & Logistics",
     status: "Available",
     platformBadge: "Play Store",
-    image: "/projects/MAVIO Smart College Transport Dashboard.png",
+    image: "/projects/MAVIO Smart College Transport Dashboard.webp",
     playStoreUrl: "https://play.google.com/store/apps/details?id=app.skillforge.mavio",
     features: [
       "Live GPS bus location map for students",

@@ -1,49 +1,74 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CRITICAL_ASSETS = [
-  "/hero-bg1.png",
-  "/hero-lap.png",
-  "/hero-mbl.png",
-  "/Abt.png",
+  "/hero-bg1.webp",
+  "/hero-lap.webp",
+  "/hero-mbl.webp",
+  "/Abt.webp",
   "/logo.png",
   "/footer-logo1.png",
   // All Project Portfolio Cards
-  "/projects/Bali-web.png",
-  "/projects/Gen B Bike Care Mockup.png",
-  "/projects/ExpenseMate App Showcase.png",
-  "/projects/MAVIO Smart College Transport Dashboard.png",
-  "/projects/SpiceHaven Restaurant Website Mockup.png",
-  "/projects/Organic E-Commerce Showcase Mockup.png",
+  "/projects/Bali-web.webp",
+  "/projects/Gen B Bike Care Mockup.webp",
+  "/projects/ExpenseMate App Showcase.webp",
+  "/projects/MAVIO Smart College Transport Dashboard.webp",
+  "/projects/SpiceHaven Restaurant Website Mockup.webp",
+  "/projects/Organic E-Commerce Showcase Mockup.webp",
   // All Service Section Graphics
-  "/service/Web Development Glassmorphism Hero Card.png",
-  "/service/Mobile App Development Showcase.png",
-  "/service/Custom Software Tech Showcase.png",
-  "/service/SaaS Development Dashboard Showcase.png",
-  "/service/AI & Automation Workflow Hero.png",
-  "/service/Futuristic Cloud Solutions Dashboard.png",
-  "/service/Digital Marketing Dashboard Growth.png",
+  "/service/Web Development Glassmorphism Hero Card.webp",
+  "/service/Mobile App Development Showcase.webp",
+  "/service/Custom Software Tech Showcase.webp",
+  "/service/SaaS Development Dashboard Showcase.webp",
+  "/service/AI & Automation Workflow Hero.webp",
+  "/service/Futuristic Cloud Solutions Dashboard.webp",
+  "/service/Digital Marketing Dashboard Growth.webp",
 ];
 
 export default function VideoPreloader() {
-  const [isVisible, setIsVisible] = useState(true);
+  const pathname = usePathname();
+  const [shouldRender, setShouldRender] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [bgColor, setBgColor] = useState<string>("#EAEAEA");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Lock body scrolling while preloader is active
-    document.body.style.overflow = "hidden";
+    // 1. Only run preloader on the root home page "/"
+    if (pathname !== "/") {
+      setShouldRender(false);
+      return;
+    }
 
-    // Preload ALL critical image assets into browser cache during preloader video
+    // 2. Check if already completed in this browser session
+    try {
+      const hasSeen = sessionStorage.getItem("hasSeenPreloader");
+      if (hasSeen === "true") {
+        setShouldRender(false);
+        return;
+      }
+    } catch {
+      // Ignore storage errors if any
+    }
+
+    // Render preloader for fresh home page visit
+    setShouldRender(true);
+
+    // Preload critical assets into browser cache
     CRITICAL_ASSETS.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
+  }, [pathname]);
 
-    // Start video playback
+  // Handle video playback & body scroll lock once component renders in DOM
+  useEffect(() => {
+    if (!shouldRender) return;
+
+    document.body.style.overflow = "hidden";
+
     if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
@@ -57,7 +82,7 @@ export default function VideoPreloader() {
       clearTimeout(fallbackTimer);
       document.body.style.overflow = "unset";
     };
-  }, []);
+  }, [shouldRender]);
 
   // Dynamically sample the video's corner pixel to match background 100% seamlessly
   const handlePlayOrLoaded = () => {
@@ -88,14 +113,22 @@ export default function VideoPreloader() {
 
   const handleComplete = () => {
     if (isFadingOut) return;
+
+    // Record session flag when preloader finishes so refreshes/subpages skip it
+    try {
+      sessionStorage.setItem("hasSeenPreloader", "true");
+    } catch {
+      // Ignore storage errors
+    }
+
     setIsFadingOut(true);
     setTimeout(() => {
-      setIsVisible(false);
+      setShouldRender(false);
       document.body.style.overflow = "unset";
     }, 800); // 800ms smooth fade transition
   };
 
-  if (!isVisible) return null;
+  if (!shouldRender) return null;
 
   return (
     <AnimatePresence>
@@ -141,3 +174,5 @@ export default function VideoPreloader() {
     </AnimatePresence>
   );
 }
+
+

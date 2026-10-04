@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="lg:col-span-7 relative flex items-center justify-center">
             <div className="relative w-full aspect-[16/10.5] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-[#DCE7F5] shadow-xl bg-white">
               <Image
-                src="/Abt.png"
+                src="/Abt.webp"
                 alt="About 5Zen Technologies"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
